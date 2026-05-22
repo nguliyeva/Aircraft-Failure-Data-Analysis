@@ -4,7 +4,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.stats import chi2, kstest
 
-data = {
+data = 
+{
     7907: [194, 209, 250, 279, 312, 493],
     7908: [413, 427, 485, 522, 622, 687, 696, 865],
     7909: [90, 100, 160, 346, 407, 456, 470, 494, 550, 570, 649, 733, 777, 836, 865, 983],
