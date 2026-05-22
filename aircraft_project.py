@@ -4,13 +4,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.stats import chi2, kstest
 
-# ============================================================
-# ECE313 Final Project - Group 11
-# Failure Data Analysis of Aircraft Air-Conditioning Units
-# ============================================================
-
-# -------------------- Raw failure-time data --------------------
-
 data = {
     7907: [194, 209, 250, 279, 312, 493],
     7908: [413, 427, 485, 522, 622, 687, 696, 865],
@@ -31,7 +24,7 @@ n_units = len(data)
 os.makedirs("results", exist_ok=True)
 os.makedirs("figures", exist_ok=True)
 
-# -------------------- Inter-failure times --------------------
+# Inter-failure times
 
 failure_records = []
 inter_records = []
@@ -101,7 +94,7 @@ mcrf_df = pd.DataFrame({
 
 mcrf_df.to_csv("results/mcrf_results.csv", index=False)
 
-# -------------------- HPP and Power Law NHPP estimation --------------------
+# HPP and Power Law NHPP estimation 
 
 r = len(all_times)
 
@@ -144,7 +137,7 @@ model_parameters.to_csv("results/model_parameters.csv", index=False)
 print("\nModel estimates:")
 print(model_parameters)
 
-# -------------------- Interval counts and goodness-of-fit --------------------
+# Interval counts and goodness-of-fit 
 
 bins = np.arange(0, 1100, 100)
 observed_counts, edges = np.histogram(all_times, bins=bins)
@@ -199,7 +192,7 @@ print(interval_table.round(3))
 print("\nGoodness-of-fit:")
 print(gof_table.round(3))
 
-# -------------------- Plot settings --------------------
+# Plot settings 
 
 plt.rcParams.update({
     "font.size": 10,
@@ -209,7 +202,7 @@ plt.rcParams.update({
 
 aircraft_ids = list(data.keys())
 
-# -------------------- Figure 1: Failure-time rug plot --------------------
+# Figure 1: Failure-time rug plot 
 
 fig, ax = plt.subplots(figsize=(8, 4.8))
 
@@ -234,7 +227,7 @@ fig.tight_layout()
 plt.savefig("figures/failure_timeline.png", dpi=300)
 plt.close()
 
-# -------------------- Figure 2: Inter-failure boxplot --------------------
+# Figure 2: Inter-failure boxplot 
 
 fig, ax = plt.subplots(figsize=(8, 4.8))
 
@@ -258,7 +251,7 @@ fig.tight_layout()
 plt.savefig("figures/inter_failure_boxplot.png", dpi=300)
 plt.close()
 
-# -------------------- Figure 3: MCRF with fitted models --------------------
+# Figure 3: MCRF with fitted models 
 
 fig, ax = plt.subplots(figsize=(8, 4.8))
 
@@ -278,7 +271,7 @@ fig.tight_layout()
 plt.savefig("figures/mcrf_plot.png", dpi=300)
 plt.close()
 
-# -------------------- Figure 4: 100-day interval counts --------------------
+# Figure 4: 100-day interval counts 
 
 fig, ax = plt.subplots(figsize=(8, 4.8))
 
@@ -299,7 +292,7 @@ fig.tight_layout()
 plt.savefig("figures/interval_counts.png", dpi=300)
 plt.close()
 
-# -------------------- Figure 5: Cumulative pooled failures --------------------
+# Figure 5: Cumulative pooled failures 
 
 fig, ax = plt.subplots(figsize=(8, 4.8))
 
@@ -319,7 +312,7 @@ fig.tight_layout()
 plt.savefig("figures/cumulative_fit.png", dpi=300)
 plt.close()
 
-# -------------------- Figure 6: Time-rescaling diagnostic --------------------
+# Figure 6: Time-rescaling diagnostic 
 
 fig, ax = plt.subplots(figsize=(7, 4.8))
 
